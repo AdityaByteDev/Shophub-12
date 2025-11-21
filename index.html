@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopHub – Online Everything Store</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- =========================
+     GLOBAL HEADER
+==========================-->
+<header class="top-bar">
+  <div class="container row">
+    <div class="logo">ShopHub</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search 10 million products…">
+      <button onclick="searchProducts()">🔍</button>
+    </div>
+    <nav class="nav-links">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('deals')">Deals</a>
+      <a href="#" onclick="showPage('account')">Account</a>
+      <a href="#" onclick="toggleCart()" class="cart-link">
+        Cart <span id="cartBadge">0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- =========================
+     MOBILE NAV (hamburger)
+==========================-->
+<div class="mob-nav">
+  <button onclick="document.body.classList.toggle('menu-open')">☰</button>
+</div>
+
+<!-- =========================
+     PAGES (SPA – shown/hidden via JS)
+==========================-->
+<main>
+  <!-- ---------- HOME ---------- -->
+  <section id="home" class="page active">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Biggest Sale of the Year</h1>
+        <p>Up to 70 % off on electronics, fashion & more</p>
+        <button class="cta" onclick="showPage('products')">Shop Now</button>
+      </div>
+    </div>
+
+    <h2 class="section-title">Trending Now</h2>
+    <div class="product-grid" id="trendingGrid"></div>
+  </section>
+
+  <!-- ---------- PRODUCT LIST ---------- -->
+  <section id="products" class="page">
+    <aside class="filters">
+      <h3>Filters</h3>
+      <label><input type="checkbox" onchange="filterCat('electronics')"> Electronics</label>
+      <label><input type="checkbox" onchange="filterCat('fashion')"> Fashion</label>
+      <label><input type="checkbox" onchange="filterCat('home')"> Home</label>
+    </aside>
+    <div class="products-area">
+      <h2>All Products</h2>
+      <div class="product-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ---------- PRODUCT DETAIL ---------- -->
+  <section id="detail" class="page">
+    <div class="detail-wrapper" id="detailBox"></div>
+  </section>
+
+  <!-- ---------- DEALS ---------- -->
+  <section id="deals" class="page">
+    <h2>Lightning Deals</h2>
+    <div class="product-grid" id="dealsGrid"></div>
+  </section>
+
+  <!-- ---------- ACCOUNT ---------- -->
+  <section id="account" class="page">
+    <h2>Your Account</h2>
+    <p>Manage orders, wishlists & settings (demo only).</p>
+  </section>
+</main>
+
+<!-- =========================
+     CART SLIDE-OUT
+==========================-->
+<aside id="cart" class="cart-drawer">
+  <h2>Cart <span class="close" onclick="toggleCart()">×</span></h2>
+  <div id="cartList"></div>
+  <div class="cart-footer">
+    <div class="total">Total: $<span id="cartTotal">0.00</span></div>
+    <button class="checkout" onclick="alert('Checkout not implemented')">Proceed to Buy</button>
+  </div>
+</aside>
+
+<!-- =========================
+     FOOTER
+==========================-->
+<footer>
+  © <span id="year"></span> ShopHub – Frontend demo only
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
